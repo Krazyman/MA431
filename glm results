@@ -1,0 +1,203 @@
+                  Generalized Linear Model Regression Results                   
+================================================================================
+Dep. Variable:     ['df2[0]', 'df2[1]']   No. Observations:                   69
+Model:                              GLM   Df Residuals:                       67
+Model Family:                  Binomial   Df Model:                            1
+Link Function:                    logit   Scale:                          1.0000
+Method:                            IRLS   Log-Likelihood:                -172.59
+Date:                  Thu, 18 Apr 2019   Deviance:                       140.33
+Time:                          10:37:50   Pearson chi2:                     128.
+No. Iterations:                       5   Covariance Type:             nonrobust
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -1.7696      0.063    -28.273      0.000      -1.892      -1.647
+df1           -0.3184      0.062     -5.106      0.000      -0.441      -0.196
+==============================================================================
+
+                  Generalized Linear Model Regression Results                   
+================================================================================
+Dep. Variable:     ['df2[0]', 'df2[1]']   No. Observations:                   69
+Model:                              GLM   Df Residuals:                       67
+Model Family:                  Binomial   Df Model:                            1
+Link Function:                    logit   Scale:                          1.0000
+Method:                            IRLS   Log-Likelihood:                -155.63
+Date:                  Thu, 18 Apr 2019   Deviance:                       137.12
+Time:                          10:39:28   Pearson chi2:                     124.
+No. Iterations:                       5   Covariance Type:             nonrobust
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -2.0626      0.074    -27.838      0.000      -2.208      -1.917
+df1           -0.4850      0.087     -5.567      0.000      -0.656      -0.314
+==============================================================================
+
+                  Generalized Linear Model Regression Results                   
+================================================================================
+Dep. Variable:     ['df2[0]', 'df2[1]']   No. Observations:                   69
+Model:                              GLM   Df Residuals:                       67
+Model Family:                  Binomial   Df Model:                            1
+Link Function:                    logit   Scale:                          1.0000
+Method:                            IRLS   Log-Likelihood:                -155.76
+Date:                  Thu, 18 Apr 2019   Deviance:                       144.98
+Time:                          10:40:12   Pearson chi2:                     125.
+No. Iterations:                       6   Covariance Type:             nonrobust
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -2.2521      0.075    -30.104      0.000      -2.399      -2.105
+df1           -0.4058      0.110     -3.674      0.000      -0.622      -0.189
+==============================================================================
+
+                  Generalized Linear Model Regression Results                   
+================================================================================
+Dep. Variable:     ['df2[0]', 'df2[1]']   No. Observations:                   69
+Model:                              GLM   Df Residuals:                       67
+Model Family:                  Binomial   Df Model:                            1
+Link Function:                    logit   Scale:                          1.0000
+Method:                            IRLS   Log-Likelihood:                -165.83
+Date:                  Thu, 18 Apr 2019   Deviance:                       160.91
+Time:                          10:41:52   Pearson chi2:                     147.
+No. Iterations:                       5   Covariance Type:             nonrobust
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -2.1170      0.072    -29.600      0.000      -2.257      -1.977
+df1           -0.3824      0.125     -3.070      0.002      -0.627      -0.138
+==============================================================================
+
+                  Generalized Linear Model Regression Results                   
+================================================================================
+Dep. Variable:     ['df2[0]', 'df2[1]']   No. Observations:                   69
+Model:                              GLM   Df Residuals:                       67
+Model Family:                  Binomial   Df Model:                            1
+Link Function:                    logit   Scale:                          1.0000
+Method:                            IRLS   Log-Likelihood:                -200.94
+Date:                  Thu, 18 Apr 2019   Deviance:                       201.01
+Time:                          10:43:02   Pearson chi2:                     195.
+No. Iterations:                       5   Covariance Type:             nonrobust
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -1.6934      0.060    -28.144      0.000      -1.811      -1.575
+df1           -0.4279      0.107     -3.986      0.000      -0.638      -0.217
+==============================================================================
+
+                  Generalized Linear Model Regression Results                   
+================================================================================
+Dep. Variable:     ['df2[0]', 'df2[1]']   No. Observations:                   69
+Model:                              GLM   Df Residuals:                       67
+Model Family:                  Binomial   Df Model:                            1
+Link Function:                    logit   Scale:                          1.0000
+Method:                            IRLS   Log-Likelihood:                -197.29
+Date:                  Thu, 18 Apr 2019   Deviance:                       162.96
+Time:                          11:06:39   Pearson chi2:                     152.
+No. Iterations:                       4   Covariance Type:             nonrobust
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -1.1841      0.052    -22.785      0.000      -1.286      -1.082
+df1           -0.1521      0.090     -1.685      0.092      -0.329       0.025
+==============================================================================
+
+                  Generalized Linear Model Regression Results                   
+================================================================================
+Dep. Variable:     ['df2[0]', 'df2[1]']   No. Observations:                   69
+Model:                              GLM   Df Residuals:                       67
+Model Family:                  Binomial   Df Model:                            1
+Link Function:                    logit   Scale:                          1.0000
+Method:                            IRLS   Log-Likelihood:                -192.63
+Date:                  Thu, 18 Apr 2019   Deviance:                       125.98
+Time:                          11:08:26   Pearson chi2:                     123.
+No. Iterations:                       4   Covariance Type:             nonrobust
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -0.5517      0.045    -12.259      0.000      -0.640      -0.463
+df1            0.0590      0.068      0.861      0.389      -0.075       0.193
+==============================================================================
+
+                                    Generalized Linear Model Regression Results                   
+================================================================================
+Dep. Variable:     ['df2[0]', 'df2[1]']   No. Observations:                   69
+Model:                              GLM   Df Residuals:                       67
+Model Family:                  Binomial   Df Model:                            1
+Link Function:                    logit   Scale:                          1.0000
+Method:                            IRLS   Log-Likelihood:                -185.24
+Date:                  Thu, 18 Apr 2019   Deviance:                       106.75
+Time:                          11:17:53   Pearson chi2:                     104.
+No. Iterations:                       3   Covariance Type:             nonrobust
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -0.3187      0.044     -7.267      0.000      -0.405      -0.233
+df1            0.0852      0.059      1.452      0.146      -0.030       0.200
+==============================================================================
+
+                  Generalized Linear Model Regression Results                   
+================================================================================
+Dep. Variable:     ['df2[0]', 'df2[1]']   No. Observations:                   69
+Model:                              GLM   Df Residuals:                       67
+Model Family:                  Binomial   Df Model:                            1
+Link Function:                    logit   Scale:                          1.0000
+Method:                            IRLS   Log-Likelihood:                -185.17
+Date:                  Thu, 18 Apr 2019   Deviance:                       109.24
+Time:                          11:18:40   Pearson chi2:                     106.
+No. Iterations:                       3   Covariance Type:             nonrobust
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -0.2925      0.045     -6.560      0.000      -0.380      -0.205
+df1           -0.1775      0.052     -3.405      0.001      -0.280      -0.075
+==============================================================================
+
+                  Generalized Linear Model Regression Results                   
+================================================================================
+Dep. Variable:     ['df2[0]', 'df2[1]']   No. Observations:                   69
+Model:                              GLM   Df Residuals:                       67
+Model Family:                  Binomial   Df Model:                            1
+Link Function:                    logit   Scale:                          1.0000
+Method:                            IRLS   Log-Likelihood:                -160.32
+Date:                  Thu, 18 Apr 2019   Deviance:                       57.016
+Time:                          11:19:08   Pearson chi2:                     56.6
+No. Iterations:                       4   Covariance Type:             nonrobust
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -0.4354      0.044     -9.808      0.000      -0.522      -0.348
+df1           -0.1404      0.046     -3.052      0.002      -0.230      -0.050
+==============================================================================
+
+                  Generalized Linear Model Regression Results                   
+================================================================================
+Dep. Variable:     ['df2[0]', 'df2[1]']   No. Observations:                   69
+Model:                              GLM   Df Residuals:                       67
+Model Family:                  Binomial   Df Model:                            1
+Link Function:                    logit   Scale:                          1.0000
+Method:                            IRLS   Log-Likelihood:                -187.09
+Date:                  Thu, 18 Apr 2019   Deviance:                       129.04
+Time:                          11:24:20   Pearson chi2:                     118.
+No. Iterations:                       4   Covariance Type:             nonrobust
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -0.8948      0.048    -18.453      0.000      -0.990      -0.800
+df1           -0.0864      0.046     -1.893      0.058      -0.176       0.003
+==============================================================================
+
+                  Generalized Linear Model Regression Results                   
+================================================================================
+Dep. Variable:     ['df2[0]', 'df2[1]']   No. Observations:                   69
+Model:                              GLM   Df Residuals:                       67
+Model Family:                  Binomial   Df Model:                            1
+Link Function:                    logit   Scale:                          1.0000
+Method:                            IRLS   Log-Likelihood:                -162.81
+Date:                  Thu, 18 Apr 2019   Deviance:                       98.863
+Time:                          11:24:50   Pearson chi2:                     93.4
+No. Iterations:                       5   Covariance Type:             nonrobust
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -1.4700      0.055    -26.493      0.000      -1.579      -1.361
+df1            0.0124      0.051      0.244      0.808      -0.087       0.112
+==============================================================================
