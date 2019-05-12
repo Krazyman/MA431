@@ -13,9 +13,11 @@ import numpy as np
 import statsmodels.api as sm
 from scipy import stats
 import matplotlib.pyplot as plt
+import inspect
 # from statsmodels.stats.outliers_influence import summary_table
 # from summary_table import *
-from statsmodels.sandbox.regression.predstd import wls_prediction_std
+# from statsmodels.sandbox.regression.predstd import wls_prediction_std
+# from sklearn.linear_model import LinearRegression
 
 #copy this class
 # RainCount is the count of number of raindays per month with year
@@ -79,12 +81,51 @@ def myfunc(e):
 
 # copy this
 # filters the months in each season Ex. All Jan. in El for 0.25
-def filt(data, lvl, season, month, temp):
+def filt(data, season, month, temp):
     dates = []
     for item in data:
         # print(item.date.month)
         if (item.season == season and item.date.month == month and item.temp == temp) or\
          (season is None and item.date.month == month and temp is None):
+            dates.append(item)
+    return dates
+
+def jo_func(data, lvl):
+    date_set = []
+    for i in range(1951, 1961):
+        for j in range(1, 13):
+            sub_set = []
+            arr = jo_func_helper(data, lvl, j, i)
+            if lvl == 1:
+                avg = mean(stuff.lvl1 for stuff in arr)
+                std = stdev(stuff.lvl1 for stuff in arr)
+                df = len(arr) -1
+                tvalue = t.ppf(0.90, df=df)
+                value = ttest(avg, tvalue, std, len(arr))
+                sub_set.append((avg, std, value[0], value[1]))
+            elif lvl == 2:
+                avg = mean(stuff.lvl2 for stuff in arr)
+                std = stdev(stuff.lvl2 for stuff in arr)
+                df = len(arr) -1
+                tvalue = t.ppf(0.95, df=df)
+                value = ttest(avg, tvalue, std, len(arr))
+                date_set.append((avg, std, value[0], value[1]))
+            elif lvl == 3:
+                avg = mean(stuff.lvl3 for stuff in arr)
+                std = stdev(stuff.lvl3 for stuff in arr)
+                df = len(arr) -1
+                tvalue = t.ppf(0.95, df=df)
+                value = ttest(avg, tvalue, std, len(arr))
+                date_set.append((avg, std, value[0], value[1]))
+            date_set.append(sub_set)
+    return date_set
+
+# n = number of years
+def jo_func_helper(data, lvl, month, n):
+    dates = []
+    for item in data:
+        # print(item.date.month)
+        if (item.date.year <= n and item.date.month == month):
             # print(item)
             if lvl == 1:
                 dates.append(item)
@@ -94,11 +135,12 @@ def filt(data, lvl, season, month, temp):
                 dates.append(item)
     return dates
 
+
 # gets the avg for the all the months
-def go_getter(data, lvl, season):
+def go_getter(data, lvl, season, temp):
     date_set = []
     for i in range(1, 13):
-        arr = filt(data, lvl, season, i)
+        arr = filt(data, lvl, season, i, temp)
         if lvl == 1:
             avg = mean(stuff.lvl1 for stuff in arr)
             std = stdev(stuff.lvl1 for stuff in arr)
@@ -134,6 +176,14 @@ def stat(data):
 def ttest(avg, tvalue, std, n):
     return (avg - (tvalue*std/sqrt(n)), avg + (tvalue*std/sqrt(n)))
 
+def best_fit_slope_and_intercept(xs,ys):
+    m = (((mean(xs)*mean(ys)) - mean(xs*ys)) /
+         ((mean(xs)*mean(xs)) - mean(xs*xs)))
+    
+    b = mean(ys) - m*mean(xs)
+    
+    return m, b
+
 count = read_date_from_file("count.csv")
 group_oni(count)
 # print(count)
@@ -143,27 +193,78 @@ group_oni(count)
 # for i in range(len(x)):
 #     print(x[i][0])
 # print(filt(count, 1, None, 1)) # all of jan
+# data = jo_func(count, 1)
+# [print(stuff) for stuff in data]
 
 #-------------------------------------------------------------------------
-month = filt(count, 1, None, 1, None) #copy this
+month = filt(count, None, 1, None) #copy this
 # print(month)
 df1 = pd.DataFrame({"Oni": [item.oni for item in month],    #copy this variable
                     "Temp": [item.temp for item in month]})
 df2 = pd.DataFrame({"Rain": [item.lvl1 for item in month]})#,
     # "Non": [monthrange(item.date.year, item.date.month)[1]-item.lvl1 for item in month]})
 
-model = sm.formula.glm("df2 ~ df1",
-                       family=sm.families.Gaussian(), data=df1).fit()
-print(model.summary())
-print(model.bse)
-print(model.fittedvalues)
-# print(sm.formula.glm.summary(model))
+df1 = sm.add_constant(df1)
 
-# print(model.params)
-# y = [(e**y)/(1+e**y) for y in model.mu] # probability 
-# y = [y for y in model.mu] # perfect fit values
-y = [stuff.lvl1 for stuff in month] # 0.25 raindays
-x = [item.oni for item in month] # oni lvl for everything for the month
+model = sm.GLM(df2, df1, family=sm.families.Gaussian())
+model_fit = model.fit()
+print(model_fit.summary())
+print([i for i in model_fit.params])
+print(model_fit.bse)
+#-------------------------------------------------------------------------
+
+def printer(data, filename):
+    coeff = []
+    std = []
+    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",\
+             "Aug", "Sep", "Oct", "Nov", "Dec"]
+    for lvl in range(1, 4):
+        for month in range(1, 13):
+            stuff = filt(data, None, month, None)
+            df1 = pd.DataFrame({"Oni": [item.oni for item in stuff],    
+                                "Temp": [item.temp for item in stuff]})
+            if lvl == 1:
+                df2 = pd.DataFrame({"Rain": [item.lvl1 for item in stuff]}) 
+            elif lvl == 2:
+                df2 = pd.DataFrame({"Rain": [item.lvl2 for item in stuff]})
+            elif lvl == 3:
+                df2 = pd.DataFrame({"Rain": [item.lvl3 for item in stuff]})
+            df1 = sm.add_constant(df1)
+            model = sm.GLM(df2, df1, family=sm.families.Gaussian())
+            model_fit = model.fit()
+            coeff.append([i for i in model_fit.params])
+            std.append([i for i in model_fit.bse])
+    counter = 1
+    for element in coeff:
+        print(counter , element, std[counter-1])
+        counter +=1
+    n = open(filename, "w")
+    for abb in months:
+        n.write("{!r}. Constant Coefficient,{!r}. Oni Coefficient,{!r}. Temperature Coefficient,{!r}. Constant Standard Error,{!r}. Oni Standard Error,{!r}. Temperature Standard Error,".format(abb, abb, abb, abb, abb, abb))
+    n.write("\n")
+    for i in range(len(coeff)):
+        if i%12==0 and i!=0:
+            n.write("\n{!r},{!r},{!r},{!r},{!r},{!r},".format(coeff[i][0], coeff[i][1], coeff[i][2], std[i][0], std[i][1], std[i][2]))
+        else:
+            n.write("{!r},{!r},{!r},{!r},{!r},{!r},".format(coeff[i][0], coeff[i][1], coeff[i][2], std[i][0], std[i][1], std[i][2]))
+
+
+printer(count, "result.csv")
+            
+
+# print(model_fit.get_influence)
+# attributes = inspect.getmembers(model_fit, lambda a:not(inspect.isroutine(a)))
+# print([a for a in attributes if not(a[0].startswith('__') and a[0].endswith('__'))])
+# # print(model)
+# # print(model.bse)
+# # print(model.fittedvalues)
+# # print(sm.formula.glm.summary(model))
+
+# # print(model.params)
+# # y = [(e**y)/(1+e**y) for y in model.mu] # probability 
+# # y = [y for y in model.mu] # perfect fit values
+# y = [stuff.lvl1 for stuff in month] # 0.25 raindays
+# x = [item.oni for item in month] # oni lvl for everything for the month
 
 #--------------------------------------------------------------------------------
 # plot residuals vs fitted values
@@ -215,10 +316,16 @@ x = [item.oni for item in month] # oni lvl for everything for the month
 # ax.scatter(x, y)
 # # plt.plot(x, y)
 # # line_fit = sm.GLM(y, sm.add_constant(x, prepend=True)).fit()
-# # print(str(line_fit))
-# slope,  intercept, r_value, p_value, std_err = stats.linregress(x,y)
+# # # print(str(line_fit))
+# # slope,  intercept, r_value, p_value, std_err = stats.linregress(x,y)
+# xs = np.array(x, dtype=np.float64)
+# ys = np.array(y, dtype=np.float64)
+# slope, intercept=best_fit_slope_and_intercept(xs, ys)
 
 # abline_plot(model_results=model, ax=ax, label="{!r}x+{!r}".format(slope, intercept))
+
+
+
 
 # # print(y)
 
